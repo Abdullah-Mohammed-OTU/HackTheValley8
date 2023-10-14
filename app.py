@@ -1,22 +1,17 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
+from TrainModel import main
 
 app = Flask(__name__)
 
-# Sample dataset
-BONDS = [
-    {"name": "Bond A", "change_in_price": 5},
-    {"name": "Bond B", "change_in_price": 10},
-    #... add more sample bonds
-]
+model = main()
 
-@app.route("/recommend", methods=["POST"])
-def recommend_bonds():
-    data = request.json
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    temperature = None
+    if request.method == 'POST':
+        year = int(request.form['year'])
+        temperature = model.predict([[year]])[0]
+    return render_template('index.html', temperature=temperature)
 
-    # Placeholder logic for recommendation (You can replace this with your actual logic)
-    recommended_bonds = [bond for bond in BONDS if bond["change_in_price"] < 10] if data["riskType"] == "low" else [bond for bond in BONDS if bond["change_in_price"] >= 10]
-
-    return jsonify(recommended_bonds)
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True)

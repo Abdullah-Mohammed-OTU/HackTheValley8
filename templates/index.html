@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Temperature Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Toronto's Average Temperatures</h1>
+        <h2>Enter a Year to Predict Temperature</h2>
+        <form action="/" method="post">
+            <input type="text" name="year" placeholder="Enter year (e.g. 2030)" required>
+            <input type="submit" value="Predict">
+        </form>
+        {% if temperature %}
+        <h3>Estimated Temperature: {{ temperature }}°C</h3>
+        {% endif %}
+    </div>
+</body>
+
+</html>
+
+
