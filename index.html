@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bond Recommendation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Your Personal Financial Advisor</h1>
+    <form id="bondForm">
+        <label>
+            What is your income?
+            <input type="number" id="income" required>
+        </label>
+        <label>
+            How much money do you want to put away?
+            <input type="number" id="moneyToPutAway" required>
+        </label>
+        <label>
+            When do you want to take your money out in the future?
+            <input type="date" id="withdrawalDate" required>
+        </label>
+        <label>
+            Are you looking for a high risk or low risk?
+            <select id="riskType">
+                <option value="high">High Risk</option>
+                <option value="low">Low Risk</option>
+            </select>
+        </label>
+        <button type="button" onclick="submitForm()">Find Bonds</button>
+    </form>
+    <div id="results"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
